@@ -1,0 +1,10 @@
+<mvc:View controllerName="ICS_myTimeSheet.ICS_myTimeSheet.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="app">
+		<pages>
+			<SplitApp id="splitappid" mode="StretchCompressMode">
+				<masterPages></masterPages>
+				<detailPages></detailPages>
+			</SplitApp>
+		</pages>
+	</App>
+</mvc:View>

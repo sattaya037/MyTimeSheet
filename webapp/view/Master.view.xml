@@ -1,0 +1,37 @@
+<mvc:View controllerName="ICS_myTimeSheet.ICS_myTimeSheet.controller.Master" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page id="masterpageid" title="My Timesheet" titleAlignment="Center">
+				<subHeader>
+					<Toolbar>
+						<SearchField width="100%" placeholder="Year, Month, Project" liveChange="onSearch"/>
+					</Toolbar>
+				</subHeader>
+				<content>
+					<List id="timeSheetList" items="{path: '/timeSheet'}" mode="{device>/listMode}">
+						<infoToolbar>
+							<Toolbar visible="false" id="idInfoToolbar">
+								<Label id="idFilterLabel"/>
+							</Toolbar>
+						</infoToolbar>
+						<items>
+							<ObjectListItem title="{month} {year}" type="Active" press="onItemPress" icon="" number="0.00" numberUnit="Man-Day">
+								<ObjectAttribute text="(Project Name)"/>
+							</ObjectListItem>
+							<!--<StandardListItem title="{month} {year}" description="(Project Name)"/>-->
+						</items>
+					</List>
+					<VBox>
+						<Text text=" "/>
+					</VBox>
+				</content>
+				<footer>
+					<OverflowToolbar width="100%" height="auto" design="Auto" enabled="true" visible="true">
+						<ToolbarSpacer/>
+						<OverflowToolbarButton text="Delete" icon="sap-icon://filter"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
