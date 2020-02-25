@@ -87,12 +87,14 @@
 				"name": "MasterView",
 				"pattern": "",
 				"titleTarget": "",
+				"transition": "slide",
 				"greedy": false,
 				"target": ["DetailView", "MasterView"]
 			}, {
 				"name": "DetailView",
-				"pattern": "DetailView/{path}",
+				"pattern": "DetailView/{month}",
 				"titleTarget": "",
+				"transition": "slide",
 				"greedy": false,
 				"target": ["DetailView"]
 			}],

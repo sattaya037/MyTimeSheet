@@ -49,14 +49,24 @@ sap.ui.define([
 						new Filter("month", FilterOperator.Contains, sQueryUpLow), // filter for value 1
 						new Filter("year", FilterOperator.EQ, sQuery) // filter for value 2
 					]
-
 				});
 			}
 			// update list binding
 			var list = this.getView().byId("timeSheetList");
 			var binding = list.getBinding("items");
 			binding.filter(aFilters, "Application");
-		}
+		},
+		onItemPress: function (oEvent) {
+
+			var oItem, oCtx, loRouter, path;
+			oItem = oEvent.getSource();
+			console.log(oItem.getTitle())
+			loRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			loRouter.navTo("DetailView", {
+				month: oItem.getTitle()
+			});
+
+		},
 
 	});
 });

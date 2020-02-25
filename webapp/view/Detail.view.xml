@@ -1,7 +1,7 @@
 <mvc:View controllerName="ICS_myTimeSheet.ICS_myTimeSheet.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
 	<App>
 		<pages>
-			<Page id="detailpageid" title="Detail">
+			<Page id="detailpageid" title="{view>/title}  (Project Name)" navButtonPress="onNavBack" showNavButton="true">
 				<content></content>
 			</Page>
 		</pages>
