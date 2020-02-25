@@ -1,8 +1,59 @@
 <mvc:View controllerName="ICS_myTimeSheet.ICS_myTimeSheet.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
 	<App>
+		<!---->
 		<pages>
-			<Page id="detailpageid" title="{view>/title}  (Project Name)" navButtonPress="onNavBack" showNavButton="true">
-				<content></content>
+			<Page id="detailpageid" title="{view>/title} (Project Name)" navButtonPress="onNavBack" showNavButton="true">
+				<content>
+					<!--<ObjectHeader binding="" intro="(Nick Name)"  title="Name" condensed="true" number="0.0" numberUnit="Man-day">-->
+					<!--	<attributes>-->
+					<!--		<ObjectAttribute title="Customer" text=""/>-->
+					<!--	</attributes>-->
+					<!--<ObjectAttribute title="Customer" text=" "/>-->
+					<!--<ObjectAttribute title="Period" text=" "/>-->
+					<!--</ObjectHeader>-->
+					<!--<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">-->
+					<!--	<items>-->
+					<!--		<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">-->
+					<!--			<Text text="Info content goes here ..."/>-->
+					<!--		</IconTabFilter>-->
+					<!--		<IconTabSeparator icon=""/>-->
+					<!--		<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32">-->
+					<!--			<Text text="Attachments go here ..."/>-->
+					<!--		</IconTabFilter>-->
+					<!--		<IconTabSeparator icon=""/>-->
+					<!--		<IconTabFilter icon="sap-icon://appointment" iconColor="Default">-->
+					<!--			<Text text="People content goes here ..."/>-->
+					<!--		</IconTabFilter>-->
+					<!--	</items>-->
+					<!--</IconTabBar>-->
+					<ObjectHeader id="oh1" responsive="true" binding="" intro="(Nickname)" title="Name" number="0.0" numberUnit="Man-day" numberState="None"
+						backgroundDesign="Translucent">
+						<attributes>
+							<ObjectAttribute title="Customer" text=""/>
+							<ObjectAttribute title="Period" text=""/>
+						</attributes>
+						<!--<statuses>-->
+						<!--	<ObjectStatus title="Approval" text="Pending"/>-->
+						<!--</statuses>-->
+						<headerContainer>
+							<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+								<items>
+									<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">
+										<Text text="Info content goes here ..."/>
+									</IconTabFilter>
+									<IconTabSeparator icon=""/>
+									<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32">
+										<Text text="Attachments go here ..."/>
+									</IconTabFilter>
+									<IconTabSeparator icon=""/>
+									<IconTabFilter icon="sap-icon://appointment" iconColor="Default">
+										<Text text="People content goes here ..."/>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+						</headerContainer>
+					</ObjectHeader>
+				</content>
 			</Page>
 		</pages>
 	</App>
