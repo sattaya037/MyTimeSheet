@@ -14,6 +14,8 @@ sap.ui.define([
 		_onRouteMatched: function (oEvent) {
 			// var list = [{type:"Charge",MD:0.00},{type:"Non-Charge",MD:16.00},{type:"Leave",MD:16.00}];
 			this.oArgs = oEvent.getParameter("arguments").month;
+			this.oPname = oEvent.getParameter("arguments").project;
+			console.log(this.oPname)
 			var TS = this.getOwnerComponent().getModel("timeSheet").getProperty("/TS");
 			var dateFormat = Date.parse(this.oArgs);
 			var getDate = new Date(dateFormat);

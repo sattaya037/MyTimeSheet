@@ -92,7 +92,7 @@
 				"target": ["DetailView", "MasterView"]
 			}, {
 				"name": "DetailView",
-				"pattern": "DetailView/{month}",
+				"pattern": "DetailView/{month},{project}",
 				"titleTarget": "",
 				"transition": "slide",
 				"greedy": false,

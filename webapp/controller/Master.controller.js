@@ -19,13 +19,19 @@ sap.ui.define([
 					month: 'short'
 				});
 				var year = fullDate.getFullYear();
-				oData.timeSheet.push({
-					month: month,
-					year: year
-				});
+				Object.entries(obj[1].Session).forEach((session) => {
+					if (session[1].projectName) {
+						oData.timeSheet.push({
+							month: month,
+							year: year,
+							project: session[1].projectName
+						});
+					}
+				})
+
 			})
 			var result = oData.timeSheet.reduce((unique, o) => {
-				if (!unique.some(obj => obj.month === o.month && obj.year === o.year)) {
+				if (!unique.some(obj => obj.month === o.month && obj.year === o.year && obj.project === o.project)) {
 					unique.push(o);
 				}
 				return unique;
@@ -43,10 +49,10 @@ sap.ui.define([
 			var sQuery = oEvent.getSource().getValue();
 			if (sQuery && sQuery.length > 0) {
 				var sQueryUpLow = sQuery[0].toUpperCase() + sQuery.substr(1).toLowerCase();
-				console.log(sQueryUpLow)
 				aFilters = new Filter({
 					filters: [
 						new Filter("month", FilterOperator.Contains, sQueryUpLow), // filter for value 1
+						new Filter("project", FilterOperator.Contains, sQueryUpLow), // filter for value 1
 						new Filter("year", FilterOperator.EQ, sQuery) // filter for value 2
 					]
 				});
@@ -60,10 +66,10 @@ sap.ui.define([
 
 			var oItem, oCtx, loRouter, path;
 			oItem = oEvent.getSource();
-			console.log(oItem.getTitle())
 			loRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			loRouter.navTo("DetailView", {
-				month: oItem.getTitle()
+				month: oItem.getTitle(),
+				project:oItem.getAttributes()[0].getText()
 			});
 
 		},
