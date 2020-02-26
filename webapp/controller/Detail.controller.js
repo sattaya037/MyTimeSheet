@@ -24,16 +24,18 @@ sap.ui.define([
 				MDLeave = [];
 			Object.entries(foundTS).forEach((obj) => {
 				Object.entries(obj[1].Session).forEach((session) => {
-					if (session[1].chargeType == "Charge") {
-						console.log(session[1].chargeType + " " + session[1].manDay);
-						MDCharge.push(session[1].manDay);
+					if (session[1].status == "Confirmed") {
+						if(session[1].chargeType =="C Charge"){
+							MDCharge.push(session[1].manDay);
+						}else{
+							MDNon.push(session[1].manDay);
+						}
+						
 
-					} else if (session[1].chargeType == "Non-Charge") {
-						console.log(session[1].chargeType + " " + session[1].manDay);
+					} else if (session[1].status == "Notconfirmed") {
 						MDNon.push(session[1].manDay)
 
-					} else if (session[1].chargeType == "Leave") {
-						console.log(session[1].chargeType + " " + session[1].manDay);
+					} else if (session[1].status == "Leave") {
 						MDLeave.push(session[1].manDay)
 					}
 

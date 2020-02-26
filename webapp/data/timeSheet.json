@@ -9,15 +9,17 @@
 			"startDate": "9",
 			"endDate": "12",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "C Charge",
+			"manDay": 0.50,
+			"projectName":"P1"
 		}, {
 			"ID": "PM",
 			"startDate": "13",
 			"endDate": "18",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "C Charge",
+			"manDay": 0.50,
+			"projectName":"P1"
 		}]
 	}, {
 		"ID": 2020015,
@@ -29,15 +31,17 @@
 			"startDate": "9",
 			"endDate": "12",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "C Charge",
+			"manDay": 0.50,
+			"projectName":"P2"
 		}, {
 			"ID": "PM",
 			"startDate": "13",
 			"endDate": "18",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "NC Non-Charge",
+			"manDay": 0.50,
+			"projectName":"P2"
 		}]
 	}, {
 		"ID": 2020016,
@@ -49,15 +53,17 @@
 			"startDate": "9",
 			"endDate": "12",
 			"status": "Notconfirmed",
-			"chargeType": "Charge",
-			"manDay": 0.50
+			"chargeType": "NC Non-Charge",
+			"manDay": 0.50,
+			"projectName":"P2"
 		}, {
 			"ID": "PM",
 			"startDate": "13",
 			"endDate": "18",
 			"status": "Notconfirmed",
-			"chargeType": "Charge",
-			"manDay": 0.50
+			"chargeType": "NC Non-Charge",
+			"manDay": 0.50,
+			"projectName":"P2"
 		}]
 	}, {
 		"ID": 202014,
@@ -69,15 +75,17 @@
 			"startDate": "9",
 			"endDate": "12",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "C Charge",
+			"manDay": 0.50,
+			"projectName":"P2"
 		}, {
 			"ID": "PM",
 			"startDate": "13",
 			"endDate": "18",
 			"status": "Notconfirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "NC Non-Charge",
+			"manDay": 0.50,
+			"projectName":"P3"
 		}]
 	}, {
 		"ID": 2020114,
@@ -89,15 +97,17 @@
 			"startDate": "9",
 			"endDate": "12",
 			"status": "Notconfirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "NC Non-Charge",
+			"manDay": 0.50,
+			"projectName":"P3"
 		}, {
 			"ID": "PM",
 			"startDate": "13",
 			"endDate": "18",
 			"status": "Confirmed",
-			"chargeType": "Non-Charge",
-			"manDay": 0.50
+			"chargeType": "C Charge",
+			"manDay": 0.50,
+			"projectName":"P3"
 		}]
 	}, {
 		"ID": 202015,
