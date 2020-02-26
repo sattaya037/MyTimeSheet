@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/core/routing/History",
 	"sap/ui/model/json/JSONModel",
 
-], function (Controller, History,JSONModel) {
+], function (Controller, History, JSONModel) {
 	"use strict";
 
 	return Controller.extend("ICS_myTimeSheet.ICS_myTimeSheet.controller.Detail", {
@@ -12,18 +12,45 @@ sap.ui.define([
 			oRouter.getRoute("DetailView").attachMatched(this._onRouteMatched, this);
 		},
 		_onRouteMatched: function (oEvent) {
+			// var list = [{type:"Charge",MD:0.00},{type:"Non-Charge",MD:16.00},{type:"Leave",MD:16.00}];
+			this.oArgs = oEvent.getParameter("arguments").month;
+			var TS = this.getOwnerComponent().getModel("timeSheet").getProperty("/TS");
+			var dateFormat = Date.parse(this.oArgs);
+			var getDate = new Date(dateFormat);
+			var checkDate = getDate.getFullYear() + "" + getDate.getMonth();
+			var foundTS = TS.filter(element => element.Month == getDate.getMonth() && element.Year == getDate.getFullYear());
+			var MDCharge = [],
+				MDNon = [],
+				MDLeave = [];
+			Object.entries(foundTS).forEach((obj) => {
+				Object.entries(obj[1].Session).forEach((session) => {
+					if (session[1].chargeType == "Charge") {
+						console.log(session[1].chargeType + " " + session[1].manDay);
+						MDCharge.push(session[1].manDay);
 
-			var oArgs = oEvent.getParameter("arguments").month;
+					} else if (session[1].chargeType == "Non-Charge") {
+						console.log(session[1].chargeType + " " + session[1].manDay);
+						MDNon.push(session[1].manDay)
+
+					} else if (session[1].chargeType == "Leave") {
+						console.log(session[1].chargeType + " " + session[1].manDay);
+						MDLeave.push(session[1].manDay)
+					}
+
+				})
+			})
+			var SumMDCharge = MDCharge.reduce((a, b) => a + b, 0);
+			var SumMDNon = MDNon.reduce((a, b) => a + b, 0);
+			var SumMDLeave = MDLeave.reduce((a, b) => a + b, 0);
+
 			var oViewModel = new JSONModel({
-				title: oArgs
+				title: this.oArgs,
+				list: [],
+				MDCharge:SumMDCharge.toFixed(2),
+				MDNon:SumMDNon.toFixed(2),
+				MDLeave:SumMDLeave.toFixed(2)
 			});
 			this.getView().setModel(oViewModel, "view");
-
-			// oView.bindElement({
-			// 	path: "/" + oArgs,
-			// 	model: "Model"
-			// });
-
 		},
 		onNavBack: function () {
 			var oHistory = History.getInstance();

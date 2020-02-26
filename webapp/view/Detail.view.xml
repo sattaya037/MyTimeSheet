@@ -39,14 +39,97 @@
 							<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
 								<items>
 									<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">
-										<Text text="Info content goes here ..."/>
+										<List id="timeSheetList" mode="{device>/listMode}" showSeparators="None">
+											<items>
+												<ObjectListItem title="Charge" type="Active" icon="sap-icon://lead" press="onItemPress" number="{view>/MDCharge}" numberUnit="Man-Day"></ObjectListItem>
+												<ObjectListItem title="Non-Charge" type="Active" press="onItemPress" icon="sap-icon://message-warning" number="{view>/MDNon}" numberUnit="Man-Day"></ObjectListItem>
+												<ObjectListItem title="Leave" type="Active" press="onItemPress" icon="sap-icon://accidental-leave" number="{view>/MDLeave}" numberUnit="Man-Day"></ObjectListItem>
+											</items>
+										</List>
 									</IconTabFilter>
 									<IconTabSeparator icon=""/>
 									<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32">
-										<Text text="Attachments go here ..."/>
+										<Table width="100%" noDataText="No data" showSeparators="All" growing="true" growingScrollToLoad="true" growingThreshold="20" mode="None"
+											class="sapUiCompSmartTable" itemPress="_onFioriAnalyticalListPageTableItemPress" items="">
+											<columns>
+												<Column width="60px" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Year" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="60px" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Month" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="90px" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Sale Order" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="40px" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Item" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Product" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Main Category" width="93.25px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Customer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="70px" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="100px" hAlign="Right" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Revenue" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem type="Active">
+													<cells>
+														<Text text="{SalesOrder/Year}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Text text="{SalesOrder/Month}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Link text="{SalesOrder/ID}" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true"
+															emphasized="false" subtle="false" press="_onLinkPress"/>
+														<Text text="{ItemNum}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Link text="{Product/NameWithCode}" textAlign="Begin" width="180px" target="_blank" wrapping="false" enabled="true" visible="true"
+															emphasized="false" subtle="false" press="_onLinkPress1"/>
+														<Text text="{Product/MainCategory}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Text text="{Customer/Name}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<ObjectNumber number="{path: 'Quantity', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="{QuantityUnit}"
+															emphasized="true" state="None"/>
+														<ObjectNumber number="{path: 'UnitPrice', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="{Currency}"
+															emphasized="true" state="None"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
 									</IconTabFilter>
 									<IconTabSeparator icon=""/>
-									<IconTabFilter icon="sap-icon://appointment" iconColor="Default">
+									<IconTabFilter icon="sap-icon://appointment" iconColor="Default" count="0">
 										<Text text="People content goes here ..."/>
 									</IconTabFilter>
 								</items>
