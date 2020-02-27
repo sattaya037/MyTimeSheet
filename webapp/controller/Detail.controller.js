@@ -22,11 +22,19 @@ sap.ui.define([
 			var foundTS = TS.filter(element => element.Month == getDate.getMonth() && element.Year == getDate.getFullYear());
 			var MDCharge = [],
 				MDNon = [],
-				MDLeave = [];
+				MDLeave = [],
+				Detail=[];
 			Object.entries(foundTS).forEach((obj) => {
 				Object.entries(obj[1].Session).forEach((session) => {
+					var fullDate = new Date(obj[1].Year, obj[1].Month, obj[1].Date);
+					var str =	fullDate.toLocaleDateString();
+					var Datelist = str.replace(/[.*+?^${}()|[\]\\]/g, "-");
 					if (session[1].projectName == this.oPname) {
-						console.log(obj[1])
+						var getDetail ={
+							date:Datelist,
+							session:session[1]
+						}
+						Detail.push(getDetail)
 						if (session[1].status == "Confirmed") {
 							if (session[1].chargeType == "C Charge") {
 								MDCharge.push(session[1].manDay);
@@ -47,11 +55,11 @@ sap.ui.define([
 			var SumMDCharge = MDCharge.reduce((a, b) => a + b, 0);
 			var SumMDNon = MDNon.reduce((a, b) => a + b, 0);
 			var SumMDLeave = MDLeave.reduce((a, b) => a + b, 0);
-
+			console.log(Detail)
 			var oViewModel = new JSONModel({
 				title: this.oArgs,
 				projectName:this.oPname,
-				list: [],
+				list: Detail,
 				MDCharge: SumMDCharge.toFixed(2),
 				MDNon: SumMDNon.toFixed(2),
 				MDLeave: SumMDLeave.toFixed(2)

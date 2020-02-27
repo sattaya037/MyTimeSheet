@@ -2,7 +2,7 @@
 	<App>
 		<!---->
 		<pages>
-			<Page id="detailpageid" title="{view>/title}  ({view>/projectName})" navButtonPress="onNavBack" showNavButton="true">
+			<Page id="detailpageid" title="{view>/title} ({view>/projectName})" navButtonPress="onNavBack" showNavButton="true">
 				<!--<ObjectHeader binding="" intro="(Nick Name)"  title="Name" condensed="true" number="0.0" numberUnit="Man-day">-->
 				<!--	<attributes>-->
 				<!--		<ObjectAttribute title="Customer" text=""/>-->
@@ -50,40 +50,47 @@
 									</List>
 								</IconTabFilter>
 								<IconTabSeparator icon=""/>
-								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32" text="Detail">
+								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="{view>/list/length}" text="Detail">
 									<content>
-										<Table id="idProductsTable" inset="false" items="">
+										<Table id="idProductsTable" inset="false" items="{view>/list}">
 											<columns>
 												<!--<Column minScreenWidth="Tablet" demandPopin="true">-->
 												<!--	<Text text=""/>-->
 												<!--</Column>-->
-												<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Top" hAlign="Left">
-													<Text text="Date" />
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Left">
+													<Text text="Date"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
 													<Text text="Session"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" >
-													<Text text="Activity" />
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+													<Text text="Activity"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
 													<Text text="Charge Type"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
 													<Text text="Man-Day"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
 													<Text text="Overtime"/>
 												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
 													<Text text="Per-diem"/>
 												</Column>
 											</columns>
 											<items>
 												<ColumnListItem>
 													<cells>
-														<!--<Text text="{SupplierName}"/>-->
-														<!--<Text text="{SupplierName}"/>-->
+														<Text text="Date: {view>date}"/>
+														<Text text="{= ${view>session/ID} === 'AM' ? 'Morning' :${view>session/ID} === 'PM' ? 'Affternoon':undefined}"/>
+														<Text text=""/>
+														<Text text="{view>session/chargeType}"/>
+														<Text text="{view>session/manDay}"/>
+														<Text text=""/>
+														<Text text=""/>
+														<!--<Text text="{view>session/ID}"/>-->
+														<!--{= ${view>/Session/0/ID} === 'AM' ? 'Morning' :${view>/Session/1/ID} === 'PM' ? 'Affternoon':undefined}-->
 														<!--<Text text="{Width} x {Depth} x {Height} {DimUnit}"/>-->
 														<!--<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"-->
 														<!--	state="{ parts: [ {path: 'WeightMeasure'}, {path: 'WeightUnit'} ], formatter: 'sap.m.sample.Table.Formatter.weightState' }"/>-->
@@ -98,7 +105,7 @@
 								</IconTabFilter>
 								<IconTabSeparator icon=""/>
 								<IconTabFilter icon="sap-icon://appointment" iconColor="Default" count="0" text="Activities">
-									<Text text="People content goes here ..."/>
+									<!--<Text text="People content goes here ..."/>-->
 								</IconTabFilter>
 							</items>
 						</IconTabBar>
