@@ -15,7 +15,6 @@ sap.ui.define([
 			// var list = [{type:"Charge",MD:0.00},{type:"Non-Charge",MD:16.00},{type:"Leave",MD:16.00}];
 			this.oArgs = oEvent.getParameter("arguments").month;
 			this.oPname = oEvent.getParameter("arguments").project;
-			console.log(this.oPname)
 			var TS = this.getOwnerComponent().getModel("timeSheet").getProperty("/TS");
 			var dateFormat = Date.parse(this.oArgs);
 			var getDate = new Date(dateFormat);
@@ -26,21 +25,23 @@ sap.ui.define([
 				MDLeave = [];
 			Object.entries(foundTS).forEach((obj) => {
 				Object.entries(obj[1].Session).forEach((session) => {
-					if (session[1].status == "Confirmed") {
-						if(session[1].chargeType =="C Charge"){
-							MDCharge.push(session[1].manDay);
-						}else{
-							MDNon.push(session[1].manDay);
+					if (session[1].projectName == this.oPname) {
+						console.log(obj[1])
+						if (session[1].status == "Confirmed") {
+							if (session[1].chargeType == "C Charge") {
+								MDCharge.push(session[1].manDay);
+
+							} else {
+								MDNon.push(session[1].manDay);
+							}
+						} else if (session[1].status == "Notconfirmed") {
+							MDNon.push(session[1].manDay)
 						}
-						
-
-					} else if (session[1].status == "Notconfirmed") {
-						MDNon.push(session[1].manDay)
-
-					} else if (session[1].status == "Leave") {
-						MDLeave.push(session[1].manDay)
+					} else {
+						if (session[1].status == "Leave") {
+							MDLeave.push(session[1].manDay)
+						}
 					}
-
 				})
 			})
 			var SumMDCharge = MDCharge.reduce((a, b) => a + b, 0);
@@ -49,10 +50,11 @@ sap.ui.define([
 
 			var oViewModel = new JSONModel({
 				title: this.oArgs,
+				projectName:this.oPname,
 				list: [],
-				MDCharge:SumMDCharge.toFixed(2),
-				MDNon:SumMDNon.toFixed(2),
-				MDLeave:SumMDLeave.toFixed(2)
+				MDCharge: SumMDCharge.toFixed(2),
+				MDNon: SumMDNon.toFixed(2),
+				MDLeave: SumMDLeave.toFixed(2)
 			});
 			this.getView().setModel(oViewModel, "view");
 		},

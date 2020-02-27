@@ -2,7 +2,7 @@
 	<App>
 		<!---->
 		<pages>
-			<Page id="detailpageid" title="{view>/title} (Project Name)" navButtonPress="onNavBack" showNavButton="true">
+			<Page id="detailpageid" title="{view>/title}  ({view>/projectName})" navButtonPress="onNavBack" showNavButton="true">
 				<!--<ObjectHeader binding="" intro="(Nick Name)"  title="Name" condensed="true" number="0.0" numberUnit="Man-day">-->
 				<!--	<attributes>-->
 				<!--		<ObjectAttribute title="Customer" text=""/>-->
@@ -40,7 +40,8 @@
 								<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">
 									<List id="timeSheetList" mode="{device>/listMode}" showSeparators="None">
 										<items>
-											<ObjectListItem title="Charge" type="Active" icon="sap-icon://lead" press="onItemPress" number="{view>/MDCharge}" numberUnit="Man-Day"></ObjectListItem>
+											<ObjectListItem title="Charge" type="Active" icon="sap-icon://lead" press="onItemPress" number="{view>/MDCharge}" numberUnit="Man-Day"
+												numberState="Success"></ObjectListItem>
 											<ObjectListItem title="Non-Charge" type="Active" press="onItemPress" icon="sap-icon://message-warning" number="{view>/MDNon}"
 												numberUnit="Man-Day"></ObjectListItem>
 											<ObjectListItem title="Leave" type="Active" press="onItemPress" icon="sap-icon://accidental-leave" number="{view>/MDLeave}"
@@ -49,74 +50,46 @@
 									</List>
 								</IconTabFilter>
 								<IconTabSeparator icon=""/>
-								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32">
+								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="32" text="Detail">
 									<content>
-										<Table id="a" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
-											growingScrollToLoad="true" class="sapUiResponsiveMargin" items="">
+										<Table id="idProductsTable" inset="false" items="">
 											<columns>
-												<Column width="8%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<!--<Column minScreenWidth="Tablet" demandPopin="true">-->
+												<!--	<Text text=""/>-->
+												<!--</Column>-->
+												<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Top" hAlign="Left">
+													<Text text="Date" />
 												</Column>
-												<Column width="30%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+													<Text text="Session"/>
 												</Column>
-												<Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Session" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" >
+													<Text text="Activity" />
 												</Column>
-												<Column width="8%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Activity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+													<Text text="Charge Type"/>
 												</Column>
-												<Column width="8%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Charge Type" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+													<Text text="Man-Day"/>
 												</Column>
-												<Column width="8%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Man-Day" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+													<Text text="Overtime"/>
 												</Column>
-												<Column width="5%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Overtime" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
-												</Column>
-												<Column width="20%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-													<header>
-														<Text text="Per-diem" width="39.703125px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-													</header>
-													<footer/>
+												<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+													<Text text="Per-diem"/>
 												</Column>
 											</columns>
 											<items>
-												<ColumnListItem type="Navigation" press="_onRowPress">
+												<ColumnListItem>
 													<cells>
-														<Link text="{Orderno}" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true" emphasized="false"
-															subtle="false" press="_onLinkPress"/>
-														<Text text="{OrdDescription}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-														<Link href="{Location/LocationURL}" text="{Location/LocationDescription}" textAlign="Begin" width="auto" target="_blank" wrapping="false"
-															enabled="true" visible="true" emphasized="false" subtle="false"/>
-														<Text text="{Location/Ward}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-														<Text text="{MainWorkCenter}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-														<Text text="{Priority}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-														<Link text="{ReportedBy}" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true" emphasized="false"
-															subtle="false" press="_onLinkPress1"/>
-														<Text text="{OrdStatus}" width="auto" maxLines="2" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<!--<Text text="{SupplierName}"/>-->
+														<!--<Text text="{SupplierName}"/>-->
+														<!--<Text text="{Width} x {Depth} x {Height} {DimUnit}"/>-->
+														<!--<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"-->
+														<!--	state="{ parts: [ {path: 'WeightMeasure'}, {path: 'WeightUnit'} ], formatter: 'sap.m.sample.Table.Formatter.weightState' }"/>-->
+														<!--<ObjectNumber-->
+														<!--	number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"-->
+														<!--	unit="{CurrencyCode}"/>-->
 													</cells>
 												</ColumnListItem>
 											</items>
@@ -124,7 +97,7 @@
 									</content>
 								</IconTabFilter>
 								<IconTabSeparator icon=""/>
-								<IconTabFilter icon="sap-icon://appointment" iconColor="Default" count="0">
+								<IconTabFilter icon="sap-icon://appointment" iconColor="Default" count="0" text="Activities">
 									<Text text="People content goes here ..."/>
 								</IconTabFilter>
 							</items>
