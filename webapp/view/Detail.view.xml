@@ -35,7 +35,7 @@
 					<!--	<ObjectStatus title="Approval" text="Pending"/>-->
 					<!--</statuses>-->
 					<headerContainer>
-						<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+						<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isPhone}" class="sapUiResponsiveContentPadding">
 							<items>
 								<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">
 									<List id="timeSheetList" mode="{device>/listMode}" showSeparators="None">
@@ -54,9 +54,9 @@
 									<content>
 										<Table id="idProductsTable" inset="false" items="{view>/list}">
 											<columns>
-												<!--<Column minScreenWidth="Tablet" demandPopin="true">-->
-												<!--	<Text text=""/>-->
-												<!--</Column>-->
+												<Column minScreenWidth="Tablet" >
+													<Text text="" visible="{= !${device>/system/phone} }"/>
+												</Column>
 												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Left">
 													<Text text="Date"/>
 												</Column>
@@ -82,7 +82,8 @@
 											<items>
 												<ColumnListItem>
 													<cells>
-														<Text text="Date: {view>date}"/>
+														<Text text="" visible="{= !${device>/system/phone} }"/>
+														<Text text="{view>date}"/>
 														<Text text="{= ${view>session/ID} === 'AM' ? 'Morning' :${view>session/ID} === 'PM' ? 'Affternoon':undefined}"/>
 														<Text text=""/>
 														<Text text="{view>session/chargeType}"/>
