@@ -52,10 +52,19 @@
 								<IconTabSeparator icon=""/>
 								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="{view>/list/length}" text="Detail">
 									<content>
-										<Table id="idProductsTable" inset="false" items="{view>/list}">
+										<Table id="timeSheetTable" inset="false" items="{view>/list}">
+											<headerToolbar>
+												<Toolbar width="auto" height="46px" design="Auto" visible="true" enabled="true">
+													<content>
+														<ToolbarSpacer width=""/>
+														<SearchField width="100%" placeholder="Date" showSearchButton="true" visible="true" liveChange="onSearch"/>
+													</content>
+												</Toolbar>
+											</headerToolbar>
 											<columns>
-												<Column minScreenWidth="Tablet" >
-													<Text text="" visible="{= !${device>/system/phone} }"/>
+												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="WithoutHeader">
+													<!--<Text text="h"/>-->
+													<!--<Text text="" visible="{= !${device>/system/phone} }"/>-->
 												</Column>
 												<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Left">
 													<Text text="Date"/>
@@ -82,8 +91,9 @@
 											<items>
 												<ColumnListItem>
 													<cells>
-														<Text text="" visible="{= !${device>/system/phone} }"/>
-														<Text text="{view>date}"/>
+														<!--<Text text="" visible="{= !${device>/system/phone} }"/>-->
+														<Text text=""/>
+														<Text text="{view>/month}-{view>date}-{view>/year}"/>
 														<Text text="{= ${view>session/ID} === 'AM' ? 'Morning' :${view>session/ID} === 'PM' ? 'Affternoon':undefined}"/>
 														<Text text=""/>
 														<Text text="{view>session/chargeType}"/>
