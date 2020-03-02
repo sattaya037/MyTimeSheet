@@ -56,7 +56,7 @@
 											<headerToolbar>
 												<Toolbar width="auto" height="46px" design="Auto" visible="true" enabled="true">
 													<content>
-														<ToolbarSpacer width=""/>
+														<!--<ToolbarSpacer width=""/>-->
 														<SearchField width="100%" placeholder="Date" showSearchButton="true" visible="true" liveChange="onSearch"/>
 													</content>
 												</Toolbar>

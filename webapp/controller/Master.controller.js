@@ -40,7 +40,6 @@ sap.ui.define([
 				timeSheet: result,
 			};
 			var oModel = new JSONModel(oData);
-			console.log(oModel)
 			this.getView().setModel(oModel);
 			// this.oModel.setData(TSobj);
 		},

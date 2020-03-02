@@ -58,7 +58,6 @@ sap.ui.define([
 			var SumMDCharge = MDCharge.reduce((a, b) => a + b, 0);
 			var SumMDNon = MDNon.reduce((a, b) => a + b, 0);
 			var SumMDLeave = MDLeave.reduce((a, b) => a + b, 0);
-			console.log(Detail)
 			var oViewModel = new JSONModel({
 				title: this.oArgs,
 				year: Year,
