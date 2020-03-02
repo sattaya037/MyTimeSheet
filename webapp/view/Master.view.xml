@@ -15,7 +15,7 @@
 							</Toolbar>
 						</infoToolbar>
 						<items>
-							<ObjectListItem title="{month} {year}" type="Active" press="onItemPress" icon="" number="0.00" numberUnit="Man-Day">
+							<ObjectListItem title="{month} {year}" type="Active" press="onItemPress" icon="" number="{MD}" numberUnit="Man-Day">
 								<ObjectAttribute text="{project}"/>
 							</ObjectListItem>
 							<!--<StandardListItem title="{month} {year}" description="(Project Name)"/>-->

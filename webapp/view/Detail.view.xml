@@ -35,7 +35,7 @@
 					<!--	<ObjectStatus title="Approval" text="Pending"/>-->
 					<!--</statuses>-->
 					<headerContainer>
-						<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isPhone}" class="sapUiResponsiveContentPadding">
+						<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="{device>/isPhone}" class="sapUiResponsiveContentPadding" backgroundDesign="Translucent">
 							<items>
 								<IconTabFilter icon="sap-icon://hint" iconColor="Positive" text="Summary">
 									<List id="timeSheetList" mode="{device>/listMode}" showSeparators="None">
@@ -52,9 +52,9 @@
 								<IconTabSeparator icon=""/>
 								<IconTabFilter icon="sap-icon://survey" iconColor="Default" count="{view>/list/length}" text="Detail">
 									<content>
-										<Table id="timeSheetTable" inset="false" items="{view>/list}">
+										<Table id="timeSheetTable" inset="false" items="{view>/list}" showSeparators="Inner">
 											<headerToolbar>
-												<Toolbar width="auto" height="46px" design="Auto" visible="true" enabled="true">
+												<Toolbar width="auto" height="46px" design="Auto" visible="true" enabled="true" style="Clear">
 													<content>
 														<!--<ToolbarSpacer width=""/>-->
 														<SearchField width="100%" placeholder="Date" showSearchButton="true" visible="true" liveChange="onSearch"/>

@@ -24,21 +24,36 @@ sap.ui.define([
 						oData.timeSheet.push({
 							month: month,
 							year: year,
-							project: session[1].projectName
+							project: session[1].projectName,
+							MD: []
 						});
+						var findIndex = oData.timeSheet.findIndex(obj => obj.month === month && obj.year === year && obj.project === session[1].projectName);
+						oData.timeSheet[findIndex].MD.push(session[1].manDay)
+						console.log()
+							// oData.timeSheet.MD.push(session[1].manDay)
 					}
 				})
 
 			})
 			var result = oData.timeSheet.reduce((unique, o) => {
 				if (!unique.some(obj => obj.month === o.month && obj.year === o.year && obj.project === o.project)) {
+					var SumMDCharge = o.MD.reduce((a, b) => a + b, 0);
+					o.MD = SumMDCharge
+						// console.log(SumMDCharge)
 					unique.push(o);
 				}
 				return unique;
 			}, []);
+			// var SumMDCharge = result.reduce((a, b) => a.MD + b.MD);
+			// console.log(a)
+			// console.log(SumMDCharge)
+
 			oData = {
 				timeSheet: result,
 			};
+			console.log(result)
+
+			// var SumMDCharge = MDCharge.reduce((a, b) => a + b, 0);
 			var oModel = new JSONModel(oData);
 			this.getView().setModel(oModel);
 			// this.oModel.setData(TSobj);
@@ -68,7 +83,7 @@ sap.ui.define([
 			loRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			loRouter.navTo("DetailView", {
 				month: oItem.getTitle(),
-				project:oItem.getAttributes()[0].getText()
+				project: oItem.getAttributes()[0].getText()
 			});
 
 		},
